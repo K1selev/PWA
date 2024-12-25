@@ -123,7 +123,7 @@ export default {
 }
 
 /* Использование media queries для адаптации на маленьких экранах */
-@media (max-width: 767px) {
+@media (max-width: 567px) {
   .photo-grid {
     grid-template-columns: repeat(2, 1fr); /* На маленьких экранах по два изображения в строке */
   }
