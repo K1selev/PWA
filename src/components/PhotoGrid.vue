@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div :class="['photo-grid', viewClass]">
     <div v-for="(src, index) in photos" :key="index" class="photo-item">
       <img :src="src" :alt="'Photo ' + (index + 1)" />
@@ -66,4 +66,79 @@ export default {
   border: 2px solid #ddd; /* Граница изображений */
 }
 
+</style> -->
+
+
+<template>
+  <div :class="['photo-grid', viewClass]">
+    <div v-for="(src, index) in photos" :key="index" class="photo-item">
+      <img :src="src" :alt="'Photo ' + (index + 1)" />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PhotoGrid',
+  props: {
+    view: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      photos: [
+        require('@/assets/photos/photo1.jpg'),
+        require('@/assets/photos/photo2.jpg'),
+        require('@/assets/photos/photo3.jpg'),
+        require('@/assets/photos/photo4.jpg'),
+        require('@/assets/photos/photo5.jpg'),
+        require('@/assets/photos/photo6.jpg'),
+      ],
+    };
+  },
+  computed: {
+    viewClass() {
+      return this.view === 'three' ? 'grid-three' : 'grid-one';
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Общие стили для сетки изображений */
+.photo-grid {
+  display: grid;
+  gap: 20px; /* Отступы между изображениями */
+  padding: 20px; /* Отступ от краев экрана */
+}
+
+.grid-three {
+  grid-template-columns: repeat(3, minmax(150px, 1fr)); /* По 3 изображения в строке для больших экранов */
+}
+
+.grid-one {
+  grid-template-columns: 1fr; /* Одно изображение в строке */
+}
+
+/* Использование media queries для адаптации на маленьких экранах */
+@media (max-width: 767px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr); /* На маленьких экранах по два изображения в строке */
+  }
+}
+
+.photo-item {
+  aspect-ratio: 1 / 1; /* Квадратные изображения */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Обрезка изображения */
+}
 </style>
