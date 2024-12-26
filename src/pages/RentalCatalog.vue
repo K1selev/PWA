@@ -162,7 +162,7 @@ export default {
 
 .cat-image {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
 }
 
