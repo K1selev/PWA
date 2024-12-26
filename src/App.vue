@@ -10,7 +10,7 @@
 
         <!-- Меню -->
         <nav class="nav-links">
-          <router-link to="/catalog" class="nav-link">Каталог</router-link>
+          <router-link to="/" class="nav-link">Каталог</router-link>
           <router-link to="/checkout" class="nav-link">Корзина</router-link>
         </nav>
 
